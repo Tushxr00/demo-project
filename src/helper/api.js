@@ -34,8 +34,8 @@ const login = async (loginData) => {
   try {
     const response = await apiCall(LOGIN, POST_REQUEST(loginData));
     if (response.success) {
-      console.log("login handler :", { response });
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("email", response.data.email);
     } else {
       alert("response error: " + response.message);
     }
@@ -50,7 +50,6 @@ const getPostedJobs = async (pageNo = 1) => {
   try {
     const token = localStorage.getItem("token");
     const response = await apiCall(GET_POSTED_JOBS(pageNo), GET_REQUEST(token));
-    console.log("get posted jobs", { response });
     return response;
   } catch (err) {
     console.log({ err });
@@ -65,7 +64,6 @@ const getOneJobCandidates = async (jobId) => {
       GET_ONE_JOB_CANDIDATES(jobId),
       GET_REQUEST(token)
     );
-    console.log("get one job candidates", { response });
     return response;
   } catch (err) {
     console.log({ err });

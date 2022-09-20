@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StoreContext = React.createContext({
   isLoggedIn: false,
   isModal: false,
   jobId: "",
+  email: "",
   onLogout: () => {},
   onLogin: () => {},
   showModal: (jobId) => {},
@@ -14,15 +16,26 @@ export const StoreContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [jobId, setJobId] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     const isToken = localStorage.getItem("token");
-    if (isToken) setIsLoggedIn(true);
+    if (isToken) {
+      setIsLoggedIn(true);
+      const emailId = localStorage.getItem("email");
+      setEmail(emailId);
+    }
   }, []);
+
   const logoutHandler = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    setEmail("");
+    navigate("/");
   };
-  const loginHandler = () => {
+
+  const loginHandler = (emailId) => {
+    setEmail(emailId);
     setIsLoggedIn(true);
   };
 
@@ -42,6 +55,7 @@ export const StoreContextProvider = (props) => {
         isLoggedIn: isLoggedIn,
         isModal: isModal,
         jobId: jobId,
+        email: email,
         onLogout: logoutHandler,
         onLogin: loginHandler,
         showModal: showModalHandler,

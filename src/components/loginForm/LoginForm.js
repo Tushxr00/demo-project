@@ -11,6 +11,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const store = useContext(StoreContext);
   const [error, setError] = useState("");
+
   const validate = Yup.object({
     email: Yup.string()
       .email("Please enter a valid email address")
@@ -20,11 +21,9 @@ const LoginForm = () => {
   });
 
   const submitHandler = async (values) => {
-    console.log({ values });
     const response = await login({ ...values });
-    console.log(response);
     if (response.success) {
-      store.onLogin();
+      store.onLogin(values.email);
       navigate("/showjobs");
       if (error.trim().length > 0) setError("");
     } else {

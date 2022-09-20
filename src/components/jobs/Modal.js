@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Card from "../UI/Card";
 
 const Modal = (props) => {
-  console.log(props.data);
   return (
     <>
       {ReactDOM.createPortal(
@@ -25,7 +24,7 @@ const Modal = (props) => {
           <div
             className="bg-primary-10/50 rounded-[10px] mt-2 w-full h-[30rem] overflow-y-scroll overflow-x-hidden"
             style={{
-              "mix-blend-mode": "normal",
+              mixBlendMode: "normal",
             }}
           >
             <div className="opacity-100 relative gap-4 m-5 grid grid-cols-2 z-30 ">
