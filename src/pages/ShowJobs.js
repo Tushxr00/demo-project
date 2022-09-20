@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import JobCards from "../components/jobs/JobCards";
-import { getPostedJobs } from "../helper/api";
+import { getOneJobCandidates, getPostedJobs } from "../helper/api";
 import writing from "../assets/writing/writing@2x.png";
+import Overlay from "../components/UI/Overlay";
+import StoreContext from "../store/context-store";
+import Modal from "../components/jobs/Modal";
 
 const ShowJobs = () => {
   const [jobData, setJobData] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
+  const [candidates, setCandidates] = useState([]);
+  const store = useContext(StoreContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -18,12 +24,23 @@ const ShowJobs = () => {
       }
     })();
   }, []);
-  console.log({ jobData });
-  console.log({ totalCount });
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      let response;
+      if (store.jobId.trim().length > 0) {
+        response = await getOneJobCandidates(store.jobId);
+      }
+      if (response?.success) {
+        setCandidates(response.data);
+      }
+    })();
+  }, [store.jobId]);
 
   return (
     <div className="w-[75vw] h-full mx-auto mt-2 mb-10">
+      {store.isModal && <Overlay close={store.hideModal} />}
+      {store.isModal && <Modal close={store.hideModal} data={candidates} />}
       <h4 className="text-white text-[12px] flex">
         <AiFillHome
           className="h-3 w-3 self-center cursor-pointer"
@@ -49,6 +66,7 @@ const ShowJobs = () => {
                 key={item.id}
                 description={item.description}
                 location={item.location}
+                action={store.showModal}
               />
             ))}
         </ul>

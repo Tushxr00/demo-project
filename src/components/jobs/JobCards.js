@@ -15,7 +15,10 @@ const JobCards = (props) => {
           <GoLocation className="text-primary-4 self-center mr-1" />
           <p className="truncate break-words w-[5rem]">{props?.location}</p>
         </h3>
-        <button className="text-[12px] bg-primary-5 text-primary-2 border-[2px] rounded-[5px] w-[125px] h-[32px] mx-[9px]">
+        <button
+          className="text-[12px] bg-primary-5 text-primary-2 border-[2px] rounded-[5px] w-[125px] h-[32px] mx-[9px]"
+          onClick={() => props.action(props.id)}
+        >
           View Apllicants
         </button>
       </div>
