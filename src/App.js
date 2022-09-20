@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/header/Header";
+import Background from "./components/layout/Background";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
+import ShowJobs from "./pages/ShowJobs";
+import StoreContext from "./store/context-store";
 
-function App() {
+const App = () => {
+  const store = useContext(StoreContext);
+  const loginState = store.isLoggedIn;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Background />
+      <Header />
+      {/* <button
+        onClick={() => {
+          store.onLogin();
+        }}
+      >
+        login
+      </button>
+      <br />
+      <button
+        onClick={() => {
+          store.onLogout();
+        }}
+      >
+        logout
+      </button>
+      <p>{`${loginState}`}</p> */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/showJobs" element={<ShowJobs />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
