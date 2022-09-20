@@ -1,0 +1,930 @@
+{
+  "info": {
+    "_postman_id": "7a1359f2-a0c2-4e14-9f06-38b159886910",
+    "name": "JobsServer",
+    "description": "This is the postman collection for the Jobs Server API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "id": "29fb5f61-75e0-4dd2-bde0-058d25cb242f",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"email\": \"squareboat@gmail.com\",\n\t\"password\": \"squareboat\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{base_url}}/auth/login",
+            "description": "This API is used for login.\n\nCredentials for login are as follows:\n\n**Recruiter with jobs:  \nEmail**: [squareboat@gmail.com](mailto:squareboat@gmail.com)  \n**Password**: squareboat\n\n**Recruiter without any jobs:  \nEmail**: [sb@gmail.com](mailto:sb@gmail.com)  \n**Password**: squareboat\n\nOn successful login, in response, a token will be present whose value will be used in Authentication header."
+          },
+          "response": [
+            {
+              "id": "c01b2922-f46e-4fc3-8ac6-8f83c48aa397",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"email\": \"squareboat@gmail.com\",\n\t\"password\": \"squareboat\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{base_url}}/auth/login"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:20:21 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "626"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"272-DOr1C0A7VjsBW26/4VOhwOJNTRM\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"email\": \"squareboat@gmail.com\",\n        \"name\": \"Recruiter\",\n        \"skills\": \"python\",\n        \"userRole\": 0,\n        \"createdAt\": \"2021-12-22T10:51:13.000Z\",\n        \"updatedAt\": \"2021-12-22T11:10:02.000Z\",\n        \"id\": \"1f2a3661-1c3d-4b0f-8ec4-19f533fb90f2\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNxdWFyZWJvYXRAZ21haWwuY29tIiwibmFtZSI6IlJlY3J1aXRlciIsInNraWxscyI6InB5dGhvbiIsInVzZXJSb2xlIjowLCJjcmVhdGVkQXQiOiIyMDIxLTEyLTIyVDEwOjUxOjEzLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTEyLTIyVDExOjEwOjAyLjAwMFoiLCJpZCI6IjFmMmEzNjYxLTFjM2QtNGIwZi04ZWM0LTE5ZjUzM2ZiOTBmMiIsImlhdCI6MTY0MzEwMjQyMX0.Zsm0nb7v4qC3YkGZp-X0OdHSOZR5KXaVLJlP0OXufQE\"\n    },\n    \"code\": 200,\n    \"success\": true\n}"
+            },
+            {
+              "id": "002faec5-aac8-4fcf-84f3-f412af22ad87",
+              "name": "Incorrect Email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"email\": \"incorrect-email@gmail.com\",\n\t\"password\": \"squareboat\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{base_url}}/auth/login"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:20:57 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "63"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3f-BKBWdqgQqnu3amgldT3JBzEo1Lo\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"You are not registered\",\n    \"success\": false,\n    \"code\": 401\n}"
+            },
+            {
+              "id": "10ebe5be-d766-4163-8699-d8d66d08e5da",
+              "name": "Incorrect password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"email\": \"squareboat@gmail.com\",\n\t\"password\": \"invalid password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "{{base_url}}/auth/login"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:21:23 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "64"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"40-umDjnc+T6m/yydqW9lr+w1JxGhs\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Wrong Email or Password\",\n    \"success\": false,\n    \"code\": 401\n}"
+            }
+          ]
+        }
+      ],
+      "id": "3cc54d1c-2563-48af-9159-4154ccd60822",
+      "description": "This folder contains the APIs required for authentication."
+    },
+    {
+      "name": "Recruiters",
+      "item": [
+        {
+          "name": "Get posted jobs",
+          "id": "a84af47c-ceef-44ef-bd12-41c8d2b32c20",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{recruiter_token}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{base_url}}/recruiters/jobs",
+            "description": "This API is used to fetch jobs of authenticated recruiter.  \n  \nTo fetch jobs of next page, a query parameter \"page\" with value as the page number.  \n**Eg.** To fetch jobs of page 2, hit the url:  \n[https://jobs-api.squareboat.info/api/v1/recruiters/jobs?page=2](https://jobs-api.squareboat.info/api/v1/recruiters/jobs?page=2)\n\n**NOTE:** Authentication token (received in login response) should be passed in Authentication header."
+          },
+          "response": [
+            {
+              "id": "f9cdb9cf-ad36-47d6-b6ac-3bcac36d3e27",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{recruiter_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{base_url}}/recruiters/jobs"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:24:16 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "4027"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fbb-Dnkfs7i8pbwCQ2Urw6WbJLs+OlM\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"title\": \"Job 90\",\n                \"description\": \"Job with candidates\",\n                \"location\": \"Kozhikode\",\n                \"createdAt\": \"2022-01-25T08:13:38.000Z\",\n                \"updatedAt\": \"2022-01-25T08:13:38.000Z\",\n                \"id\": \"3b2e43e6-c20d-4038-a929-0593df468f7f\"\n            },\n            {\n                \"title\": \"Job 89\",\n                \"description\": \"Job with candidates\",\n                \"location\": \"Ahmedabad\",\n                \"createdAt\": \"2022-01-25T08:13:37.000Z\",\n                \"updatedAt\": \"2022-01-25T08:13:37.000Z\",\n                \"id\": \"c309c820-cb76-4d78-971a-6c05e9e2d2a9\"\n            },\n            {\n                \"title\": \"Job 88\",\n                \"description\": \"Job 88 description\",\n                \"location\": \"Kanpur\",\n                \"createdAt\": \"2022-01-25T08:10:27.000Z\",\n                \"updatedAt\": \"2022-01-25T08:10:27.000Z\",\n                \"id\": \"2207af8b-9b97-417c-ac49-a7c7aeedcc9f\"\n            },\n            {\n                \"title\": \"Job 87\",\n                \"description\": \"Job 87 description\",\n                \"location\": \"Nagpur\",\n                \"createdAt\": \"2022-01-25T08:10:26.000Z\",\n                \"updatedAt\": \"2022-01-25T08:10:26.000Z\",\n                \"id\": \"c1ba7707-7141-4a05-ae0c-26b5df290717\"\n            },\n            {\n                \"title\": \"Job 86\",\n                \"description\": \"Job 86 description\",\n                \"location\": \"Patna\",\n                \"createdAt\": \"2022-01-25T08:10:24.000Z\",\n                \"updatedAt\": \"2022-01-25T08:10:24.000Z\",\n                \"id\": \"83e307e0-0da9-449d-9a4f-2ef48f984dd2\"\n            },\n            {\n                \"title\": \"Job 85\",\n                \"description\": \"Job 85 description\",\n                \"location\": \"Ahmedabad\",\n                \"createdAt\": \"2022-01-25T08:08:55.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:55.000Z\",\n                \"id\": \"594821fa-f136-4023-9c3e-b797f5631ea1\"\n            },\n            {\n                \"title\": \"Job 84\",\n                \"description\": \"Job 84 description\",\n                \"location\": \"Madurai\",\n                \"createdAt\": \"2022-01-25T08:08:52.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:52.000Z\",\n                \"id\": \"7d186e78-5139-49a3-af58-7b4f43e9ab84\"\n            },\n            {\n                \"title\": \"Job 83\",\n                \"description\": \"Job 83 description\",\n                \"location\": \"Nagpur\",\n                \"createdAt\": \"2022-01-25T08:08:50.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:50.000Z\",\n                \"id\": \"a153d395-bc8a-41d5-8b52-4b7d02ad53a2\"\n            },\n            {\n                \"title\": \"Job 82\",\n                \"description\": \"Job 82 description\",\n                \"location\": \"Kanpur\",\n                \"createdAt\": \"2022-01-25T08:08:48.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:48.000Z\",\n                \"id\": \"700e5445-ce83-4131-9ca0-9ece391f0c20\"\n            },\n            {\n                \"title\": \"Job 81\",\n                \"description\": \"Job 81 description\",\n                \"location\": \"Mumbai\",\n                \"createdAt\": \"2022-01-25T08:08:47.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:47.000Z\",\n                \"id\": \"babe2e0a-10fe-40ae-9db2-2df9754b3e08\"\n            },\n            {\n                \"title\": \"Job 80\",\n                \"description\": \"Job 80 description\",\n                \"location\": \"Thiruvananthapuram\",\n                \"createdAt\": \"2022-01-25T08:08:46.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:46.000Z\",\n                \"id\": \"5045d810-780a-4889-a442-a453d9ff8f61\"\n            },\n            {\n                \"title\": \"Job 79\",\n                \"description\": \"Job 79 description\",\n                \"location\": \"Nagpur\",\n                \"createdAt\": \"2022-01-25T08:08:44.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:44.000Z\",\n                \"id\": \"a5272f56-027c-421b-a7d5-6a1794fe55a6\"\n            },\n            {\n                \"title\": \"Job 78\",\n                \"description\": \"Job 78 description\",\n                \"location\": \"Gorakhpur\",\n                \"createdAt\": \"2022-01-25T08:08:42.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:42.000Z\",\n                \"id\": \"01d9d317-e0b9-4f39-a895-a8535cd08b63\"\n            },\n            {\n                \"title\": \"Job 77\",\n                \"description\": \"Job 77 description\",\n                \"location\": \"Gorakhpur\",\n                \"createdAt\": \"2022-01-25T08:08:41.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:41.000Z\",\n                \"id\": \"aab5eb5c-35d3-4efd-aba8-44f4cddfcdc3\"\n            },\n            {\n                \"title\": \"Job 76\",\n                \"description\": \"Job 76 description\",\n                \"location\": \"Kochi\",\n                \"createdAt\": \"2022-01-25T08:08:39.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:39.000Z\",\n                \"id\": \"bb3cf4d5-5e45-4da4-8835-f3a616745d1e\"\n            },\n            {\n                \"title\": \"Job 75\",\n                \"description\": \"Job 75 description\",\n                \"location\": \"Mumbai\",\n                \"createdAt\": \"2022-01-25T08:08:38.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:38.000Z\",\n                \"id\": \"2b0968f8-0836-456e-bc65-456b4bf3747f\"\n            },\n            {\n                \"title\": \"Job 74\",\n                \"description\": \"Job 74 description\",\n                \"location\": \"Kochi\",\n                \"createdAt\": \"2022-01-25T08:08:36.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:36.000Z\",\n                \"id\": \"e76f6060-315d-4e92-b25e-df356a734b95\"\n            },\n            {\n                \"title\": \"Job 73\",\n                \"description\": \"Job 73 description\",\n                \"location\": \"Jaipur\",\n                \"createdAt\": \"2022-01-25T08:08:35.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:35.000Z\",\n                \"id\": \"1b37d4c7-fa69-4112-9f51-3badef6d44b7\"\n            },\n            {\n                \"title\": \"Job 72\",\n                \"description\": \"Job 72 description\",\n                \"location\": \"Chennai\",\n                \"createdAt\": \"2022-01-25T08:08:33.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:33.000Z\",\n                \"id\": \"c6288edf-51a1-4225-86d8-35c721175417\"\n            },\n            {\n                \"title\": \"Job 71\",\n                \"description\": \"Job 71 description\",\n                \"location\": \"Patna\",\n                \"createdAt\": \"2022-01-25T08:08:32.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:32.000Z\",\n                \"id\": \"57cef8ac-836a-4331-9f5a-dfd11ca1f29d\"\n            }\n        ],\n        \"metadata\": {\n            \"count\": 90,\n            \"limit\": 20\n        }\n    },\n    \"code\": 200,\n    \"success\": true\n}"
+            },
+            {
+              "id": "23a113d1-00eb-4e06-a00d-6ce94951c970",
+              "name": "Page 2 Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{recruiter_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/recruiters/jobs?page=2",
+                  "host": ["{{base_url}}"],
+                  "path": ["recruiters", "jobs"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:24:45 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "4025"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fb9-nQgknq+MYzt4JOQycjPVO+W00Uo\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"title\": \"Job 70\",\n                \"description\": \"Job 70 description\",\n                \"location\": \"Chennai\",\n                \"createdAt\": \"2022-01-25T08:08:30.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:30.000Z\",\n                \"id\": \"8a2e3d14-aa9d-4943-854c-a4c4f3c68a58\"\n            },\n            {\n                \"title\": \"Job 69\",\n                \"description\": \"Job 69 description\",\n                \"location\": \"Gorakhpur\",\n                \"createdAt\": \"2022-01-25T08:08:29.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:29.000Z\",\n                \"id\": \"4d1a2c0e-175e-459e-ba66-3056f80a27fb\"\n            },\n            {\n                \"title\": \"Job 68\",\n                \"description\": \"Job 68 description\",\n                \"location\": \"Jodhpur\",\n                \"createdAt\": \"2022-01-25T08:08:27.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:27.000Z\",\n                \"id\": \"cfa9b45c-c979-44c6-95f8-5e6353e6b7e2\"\n            },\n            {\n                \"title\": \"Job 67\",\n                \"description\": \"Job 67 description\",\n                \"location\": \"Ahmedabad\",\n                \"createdAt\": \"2022-01-25T08:08:26.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:26.000Z\",\n                \"id\": \"b9bc7a9d-f9a3-4077-bd47-af87ba4a030b\"\n            },\n            {\n                \"title\": \"Job 66\",\n                \"description\": \"Job 66 description\",\n                \"location\": \"Madurai\",\n                \"createdAt\": \"2022-01-25T08:08:24.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:24.000Z\",\n                \"id\": \"583887dd-a9f5-4858-a4de-9456ff7d331b\"\n            },\n            {\n                \"title\": \"Job 65\",\n                \"description\": \"Job 65 description\",\n                \"location\": \"Jaipur\",\n                \"createdAt\": \"2022-01-25T08:08:23.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:23.000Z\",\n                \"id\": \"d9deb920-1cfc-45be-89aa-f9d1a0fad89f\"\n            },\n            {\n                \"title\": \"Job 64\",\n                \"description\": \"Job 64 description\",\n                \"location\": \"Ahmedabad\",\n                \"createdAt\": \"2022-01-25T08:08:21.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:21.000Z\",\n                \"id\": \"c870c0b5-bd9b-4747-9fab-07e607ee2367\"\n            },\n            {\n                \"title\": \"Job 63\",\n                \"description\": \"Job 63 description\",\n                \"location\": \"Salem\",\n                \"createdAt\": \"2022-01-25T08:08:20.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:20.000Z\",\n                \"id\": \"d578a574-0edd-49e0-aff2-5484ade42bd7\"\n            },\n            {\n                \"title\": \"Job 62\",\n                \"description\": \"Job 62 description\",\n                \"location\": \"Gorakhpur\",\n                \"createdAt\": \"2022-01-25T08:08:18.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:18.000Z\",\n                \"id\": \"3d7e04bb-c89c-4b91-a630-a899267c755e\"\n            },\n            {\n                \"title\": \"Job 61\",\n                \"description\": \"Job 61 description\",\n                \"location\": \"Kolkata\",\n                \"createdAt\": \"2022-01-25T08:08:17.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:17.000Z\",\n                \"id\": \"32a10974-0f0f-4f63-9ccf-6d7a4abd6c72\"\n            },\n            {\n                \"title\": \"Job 60\",\n                \"description\": \"Job 60 description\",\n                \"location\": \"Bangalore\",\n                \"createdAt\": \"2022-01-25T08:08:15.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:15.000Z\",\n                \"id\": \"6fbed12a-cc2e-4dcd-b02d-33b8d2d030ed\"\n            },\n            {\n                \"title\": \"Job 59\",\n                \"description\": \"Job 59 description\",\n                \"location\": \"Raipur\",\n                \"createdAt\": \"2022-01-25T08:08:14.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:14.000Z\",\n                \"id\": \"0d35b373-c56a-4105-91c4-f0546949c763\"\n            },\n            {\n                \"title\": \"Job 58\",\n                \"description\": \"Job 58 description\",\n                \"location\": \"Madurai\",\n                \"createdAt\": \"2022-01-25T08:08:12.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:12.000Z\",\n                \"id\": \"2af1555f-ec94-4206-8c19-2a53b5f19e15\"\n            },\n            {\n                \"title\": \"Job 57\",\n                \"description\": \"Job 57 description\",\n                \"location\": \"Kolkata\",\n                \"createdAt\": \"2022-01-25T08:08:11.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:11.000Z\",\n                \"id\": \"0c97f3ae-ed31-473b-8414-a1e685556109\"\n            },\n            {\n                \"title\": \"Job 56\",\n                \"description\": \"Job 56 description\",\n                \"location\": \"Nagpur\",\n                \"createdAt\": \"2022-01-25T08:08:09.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:09.000Z\",\n                \"id\": \"85d8bf08-78de-4e59-83e8-1624454bb462\"\n            },\n            {\n                \"title\": \"Job 55\",\n                \"description\": \"Job 55 description\",\n                \"location\": \"Delhi\",\n                \"createdAt\": \"2022-01-25T08:08:08.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:08.000Z\",\n                \"id\": \"1ba66a36-a591-4410-88e2-ce469faa7b31\"\n            },\n            {\n                \"title\": \"Job 54\",\n                \"description\": \"Job 54 description\",\n                \"location\": \"Kanpur\",\n                \"createdAt\": \"2022-01-25T08:08:06.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:06.000Z\",\n                \"id\": \"0d909543-75f3-46e4-bdba-9a2b6380ca18\"\n            },\n            {\n                \"title\": \"Job 53\",\n                \"description\": \"Job 53 description\",\n                \"location\": \"Bangalore\",\n                \"createdAt\": \"2022-01-25T08:08:05.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:05.000Z\",\n                \"id\": \"390b3dc9-6c2d-49d7-9d30-05c3b03d64c2\"\n            },\n            {\n                \"title\": \"Job 52\",\n                \"description\": \"Job 52 description\",\n                \"location\": \"Ahmedabad\",\n                \"createdAt\": \"2022-01-25T08:08:03.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:03.000Z\",\n                \"id\": \"392e3809-d629-45ea-a4b3-d0a25bf6706c\"\n            },\n            {\n                \"title\": \"Job 51\",\n                \"description\": \"Job 51 description\",\n                \"location\": \"Kanpur\",\n                \"createdAt\": \"2022-01-25T08:08:02.000Z\",\n                \"updatedAt\": \"2022-01-25T08:08:02.000Z\",\n                \"id\": \"c27473e7-fb8b-477c-86cd-06cb1795b417\"\n            }\n        ],\n        \"metadata\": {\n            \"count\": 90,\n            \"limit\": 20\n        }\n    },\n    \"code\": 200,\n    \"success\": true\n}"
+            },
+            {
+              "id": "8a6363a9-7b0a-4da3-b84b-88ee263262d9",
+              "name": "Invalid Token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Invalid token",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{base_url}}/recruiters/jobs"
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:28:21 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "63"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3f-LKIn+AzLJ4Vj1JkqNnZUnFU3I7w\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"You are not authorized\",\n    \"success\": false,\n    \"code\": 401\n}"
+            },
+            {
+              "id": "e790b17b-3c4a-4e3d-ac5a-e9da36fc21f0",
+              "name": "No jobs posted",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{recruiter_with_no_job_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{base_url}}/recruiters/jobs"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:34:35 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "54"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"36-FWe82pKqTnL0DJMPqNCERehceJU\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": 200,\n    \"success\": true,\n    \"message\": \"No jobs posted\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get one job candidates",
+          "id": "06c32d16-9a71-473f-ba97-2ca150ed2eef",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{recruiter_token}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{base_url}}/recruiters/jobs/{{job_id}}/candidates",
+            "description": "This API is used to fetch candidates of a particular job.  \nURL: recruiters/jobs/{job_id}/candidates  \nChange the job id to get applicants of that job.\n\nAn authentication token of the recruiter needs to be passed in the Authentication header.\n\nIf no candidates are present, API will give response code of 200. If job id is invalid or does not belong to authenticated user, response code of 404 will be received."
+          },
+          "response": [
+            {
+              "id": "b8bc57ea-e7b8-4f44-8c15-1d431511a7ea",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{recruiter_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{base_url}}/recruiters/jobs/{{job_id}}/candidates"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:43:00 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1286"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"506-gIvhrQfw4nIbsAcqfEtVZHuOlLU\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"email\": \"sbcandidate1@gmail.com\",\n            \"name\": \"CandidateOne\",\n            \"skills\": \"Some skills\",\n            \"id\": \"402677e7-ff28-4c0d-994b-bc75a371f6f2\"\n        },\n        {\n            \"email\": \"sbcandidate2@gmail.com\",\n            \"name\": \"CandidateTwo\",\n            \"skills\": \"Some skills\",\n            \"id\": \"3d556244-941c-4fde-90eb-b84831e71d44\"\n        },\n        {\n            \"email\": \"sbcandidate3@gmail.com\",\n            \"name\": \"CandidateThree\",\n            \"skills\": \"Some skills\",\n            \"id\": \"1f481d40-d9d2-450e-a3c8-2897bd7b724f\"\n        },\n        {\n            \"email\": \"sbcandidate4@gmail.com\",\n            \"name\": \"CandidateFour\",\n            \"skills\": \"Some skills\",\n            \"id\": \"8ea51eb8-54e1-476e-bc9b-13844802de8b\"\n        },\n        {\n            \"email\": \"sbcandidate5@gmail.com\",\n            \"name\": \"CandidateFive\",\n            \"skills\": \"Some skills\",\n            \"id\": \"da065058-0f20-4ba5-947c-fcde24016f1c\"\n        },\n        {\n            \"email\": \"sbcandidate6@gmail.com\",\n            \"name\": \"CandidateSix\",\n            \"skills\": \"Some skills\",\n            \"id\": \"69a034a5-35c8-489b-8e79-4a4e084d3d02\"\n        },\n        {\n            \"email\": \"sbcandidate7@gmail.com\",\n            \"name\": \"CandidateSeven\",\n            \"skills\": \"Some skills\",\n            \"id\": \"22e5b1ea-eedb-41b9-ba6f-33a2b6a6f11d\"\n        },\n        {\n            \"email\": \"sbcandidate8@gmail.com\",\n            \"name\": \"CandidateEight\",\n            \"skills\": \"Some skills\",\n            \"id\": \"c19ee7d1-029e-4bf5-afe9-23432a1170eb\"\n        },\n        {\n            \"email\": \"sbcandidate9@gmail.com\",\n            \"name\": \"CandidateNine\",\n            \"skills\": \"Some skills\",\n            \"id\": \"08e46f3b-e6ae-4954-9cdb-f80a47e28c31\"\n        },\n        {\n            \"email\": \"sbcandidate10@gmail.com\",\n            \"name\": \"CandidateTen\",\n            \"skills\": \"Some skills\",\n            \"id\": \"30a5ef5e-a25c-4aa0-8d9a-3374b334a33e\"\n        }\n    ],\n    \"code\": 200,\n    \"success\": true\n}"
+            },
+            {
+              "id": "27de400b-ed76-4a57-8010-b1a6625b3036",
+              "name": "Invalid job id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{recruiter_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{base_url}}/recruiters/jobs/invalid-job-id/candidates"
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:44:07 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "60"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3c-Mo4l+l2CfRbQXctdY+g0UzO4XUo\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"No candidates found\",\n    \"success\": false,\n    \"code\": 404\n}"
+            },
+            {
+              "id": "99e86fb4-a34d-4dce-8b90-1aeff58f48b4",
+              "name": "No candidates applied",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "{{recruiter_token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{base_url}}/recruiters/jobs/{{job_with_no_candidates}}/candidates"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Jan 2022 09:50:38 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.46 (Ubuntu)"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "86"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"56-Kyk5DlmsMGJrytaS/nvpXidfQGc\""
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": 200,\n    \"success\": true,\n    \"message\": \"No candidates have applied for the job posting\"\n}"
+            }
+          ]
+        }
+      ],
+      "id": "7545895d-bd23-4b66-b863-4d209b3eb67c",
+      "description": "This folder contains the APIs required for recruiter flow."
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "48bf62a0-77e1-4f77-8aa3-1c0efc1a81af",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "025d7456-12e0-4e00-a249-634929c9530a",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "17bc6c79-fcc1-4947-9bc5-6c3ddb427a3a",
+      "key": "base_url",
+      "value": "https://jobs-api.squareboat.info/api/v1",
+      "type": "string"
+    },
+    {
+      "id": "de4c210c-8f28-42ab-8cac-885099023f5e",
+      "key": "recruiter_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNxdWFyZWJvYXRAZ21haWwuY29tIiwibmFtZSI6IlJlY3J1aXRlciIsInNraWxscyI6InB5dGhvbiIsInVzZXJSb2xlIjowLCJjcmVhdGVkQXQiOiIyMDIxLTEyLTIyVDEwOjUxOjEzLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTEyLTIyVDExOjEwOjAyLjAwMFoiLCJpZCI6IjFmMmEzNjYxLTFjM2QtNGIwZi04ZWM0LTE5ZjUzM2ZiOTBmMiIsImlhdCI6MTY0NTQzOTg3M30.xKo_bIJKoCbYDRdcrMKEBv0_Qjt9q2kFqwSBcMK0Jwo",
+      "type": "string"
+    },
+    {
+      "id": "a772a6d3-977e-4256-8e20-4a7afb838ca2",
+      "key": "recruiter_with_no_job_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNiQGdtYWlsLmNvbSIsIm5hbWUiOiJTcXVhcmVib2F0Iiwic2tpbGxzIjoiQmxhIGJsYSBibGEiLCJ1c2VyUm9sZSI6MCwiY3JlYXRlZEF0IjoiMjAyMS0xMi0xNFQxODo1MToxNC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMS0yNVQwOTozMTo0MS4wMDBaIiwiaWQiOiJmMWQ0MWNmNC1jZjhjLTQwYjYtYWMyNS01ZTBkYzhiOGVjYjAiLCJpYXQiOjE2NDU0Mzk4OTB9._gP-eoxmvZqm4uScK3Zn9hXsunJGVh-j4bKGXotfnXA",
+      "type": "string"
+    },
+    {
+      "id": "6a1f3078-1436-4c51-81fe-260ad4c4d3a5",
+      "key": "job_id",
+      "value": "3b2e43e6-c20d-4038-a929-0593df468f7f",
+      "type": "string"
+    },
+    {
+      "id": "4820db39-694d-4944-b9ba-15b1f14b2d53",
+      "key": "job_with_no_candidates",
+      "value": "c1ba7707-7141-4a05-ae0c-26b5df290717",
+      "type": "string"
+    }
+  ]
+}
