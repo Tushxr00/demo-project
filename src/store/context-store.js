@@ -4,10 +4,10 @@ const StoreContext = React.createContext({
   isLoggedIn: false,
   isModal: false,
   jobId: "",
-  showModal: (jobId) => {},
-  hideModal: () => {},
   onLogout: () => {},
   onLogin: () => {},
+  showModal: (jobId) => {},
+  hideModal: () => {},
 });
 
 export const StoreContextProvider = (props) => {
@@ -42,10 +42,10 @@ export const StoreContextProvider = (props) => {
         isLoggedIn: isLoggedIn,
         isModal: isModal,
         jobId: jobId,
-        showModal: showModalHandler,
-        hideModal: hideModalHandler,
         onLogout: logoutHandler,
         onLogin: loginHandler,
+        showModal: showModalHandler,
+        hideModal: hideModalHandler,
       }}
     >
       {props.children}

@@ -1,5 +1,3 @@
-import { info } from "autoprefixer";
-
 const BASE_URL = "https://jobs-api.squareboat.info/api/v1/";
 const LOGIN = BASE_URL + "auth/login";
 const GET_POSTED_JOBS = (pageNo) => BASE_URL + `recruiters/jobs?page=${pageNo}`;

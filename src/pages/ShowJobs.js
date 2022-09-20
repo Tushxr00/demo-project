@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import JobCards from "../components/jobs/JobCards";
 import { getPostedJobs } from "../helper/api";
 import writing from "../assets/writing/writing@2x.png";
+
 const ShowJobs = () => {
   const [jobData, setJobData] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
