@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import JobCards from "../components/jobs/JobCards";
 import { getOneJobCandidates, getPostedJobs } from "../helper/api";
@@ -7,6 +7,7 @@ import writing from "../assets/writing/writing@2x.png";
 import Overlay from "../components/UI/Overlay";
 import StoreContext from "../store/context-store";
 import Modal from "../components/jobs/Modal";
+import ReactPaginate from "react-paginate";
 
 const ShowJobs = () => {
   const [jobData, setJobData] = useState([]);
@@ -57,19 +58,42 @@ const ShowJobs = () => {
         Jobs posted by you
       </h1>
       {jobData.length > 0 && (
-        <ul className="grid gap-y-10 gap-x-6 break-1:grid-cols-4 grid-cols-3 mt-4">
-          {jobData.length > 0 &&
-            jobData.map((item) => (
-              <JobCards
-                title={item.title}
-                id={item.id}
-                key={item.id}
-                description={item.description}
-                location={item.location}
-                action={store.showModal}
-              />
-            ))}
-        </ul>
+        <>
+          <ul className=" grid gap-y-10 gap-x-6 break-1:grid-cols-4 grid-cols-3 mt-4">
+            {jobData.length > 0 &&
+              jobData.map((item) => (
+                <JobCards
+                  title={item.title}
+                  id={item.id}
+                  key={item.id}
+                  description={item.description}
+                  location={item.location}
+                  action={store.showModal}
+                />
+              ))}
+          </ul>
+          <ReactPaginate
+            className="flex  justify-center mt-8 mb-12"
+            pageClassName="h-[30px] w-[30px] border-primary-2/50 border-[2px] text-primary-2/50 mx-2 rounded-md text-center text-[0.9rem] pt-[0.2rem]"
+            nextClassName="text-white"
+            previousClassName="text-red-700"
+            activeClassName="border-none bg-primary-4/40"
+            breakLabel="..."
+            nextLabel={
+              <div className="h-[30px] w-[30px] border-primary-2/50 border-[2px] text-primary-2/50 rounded-md ml-1">
+                <AiFillCaretRight className="h-[17px] w-[17px] mx-auto mt-[0.3rem]" />
+              </div>
+            }
+            previousLabel={
+              <div className="h-[30px] w-[30px] border-primary-2/50 border-[2px] text-primary-2/50 rounded-md mr-1">
+                <AiFillCaretLeft className="h-[17px] w-[17px] mx-auto mt-[0.3rem]" />
+              </div>
+            }
+            onPageChange={(e) => console.log("change", e)}
+            pageRangeDisplayed={1}
+            pageCount={Math.ceil(totalCount / 20)}
+          />
+        </>
       )}
       {jobData.length === 0 && (
         <div className="flex w-full h-[100vh] justify-center align-middle">
