@@ -10,17 +10,20 @@ import Modal from "../components/jobs/Modal";
 import ReactPaginate from "react-paginate";
 
 const ShowJobs = () => {
-  const [jobData, setJobData] = useState([]);
+  const [jobData, setJobData] = useState({});
   const [totalCount, setTotalCount] = useState(0);
   const [candidates, setCandidates] = useState([]);
   const store = useContext(StoreContext);
+  const [pageNo, setPageNo] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       const response = await getPostedJobs();
       if (response.success) {
-        setJobData(response.data.data);
+        setJobData((prevState) => {
+          return { ...prevState, 1: response.data.data };
+        });
         setTotalCount(response.data.metadata.count);
       }
     })();
@@ -37,6 +40,22 @@ const ShowJobs = () => {
       }
     })();
   }, [store.jobId]);
+
+  const pageChange = async (page) => {
+    const pageArray = Object.keys(jobData);
+    const pageCheck = pageArray.find((item) => item === page);
+    console.log({ pageArray, pageCheck });
+    if (!pageCheck) {
+      console.log(page);
+      const response = await getPostedJobs(page);
+      if (response.success) {
+        console.log(response);
+        setJobData((prevState) => {
+          return { ...prevState, [page]: response.data.data };
+        });
+      }
+    }
+  };
 
   return (
     <div className="w-[75vw] h-full mx-auto mt-2 mb-10">
@@ -57,20 +76,19 @@ const ShowJobs = () => {
       <h1 className="text-[22px] font-bold text-white mt-[1.5rem]">
         Jobs posted by you
       </h1>
-      {jobData.length > 0 && (
+      {Object.keys(jobData).length > 0 && (
         <>
           <ul className=" grid gap-y-10 gap-x-6 break-1:grid-cols-4 grid-cols-3 mt-4">
-            {jobData.length > 0 &&
-              jobData.map((item) => (
-                <JobCards
-                  title={item.title}
-                  id={item.id}
-                  key={item.id}
-                  description={item.description}
-                  location={item.location}
-                  action={store.showModal}
-                />
-              ))}
+            {jobData?.[pageNo]?.map((item) => (
+              <JobCards
+                title={item.title}
+                id={item.id}
+                key={item.id}
+                description={item.description}
+                location={item.location}
+                action={store.showModal}
+              />
+            ))}
           </ul>
           <ReactPaginate
             className="flex  justify-center mt-8 mb-12"
@@ -89,13 +107,17 @@ const ShowJobs = () => {
                 <AiFillCaretLeft className="h-[17px] w-[17px] mx-auto mt-[0.3rem]" />
               </div>
             }
-            onPageChange={(e) => console.log("change", e)}
-            pageRangeDisplayed={1}
+            onPageChange={async (e) => {
+              console.log(e.selected + 1);
+              await pageChange(e.selected + 1);
+              setPageNo(e.selected + 1);
+            }}
+            pageRangeDisplayed={0}
             pageCount={Math.ceil(totalCount / 20)}
           />
         </>
       )}
-      {jobData.length === 0 && (
+      {Object.keys(jobData).length === 0 && (
         <div className="flex w-full h-[100vh] justify-center align-middle">
           <div className="m-10 mt-[13rem]">
             <img

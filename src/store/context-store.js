@@ -18,6 +18,7 @@ export const StoreContextProvider = (props) => {
   const [jobId, setJobId] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+
   useEffect(() => {
     const isToken = localStorage.getItem("token");
     if (isToken) {
