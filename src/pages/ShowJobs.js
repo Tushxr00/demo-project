@@ -15,6 +15,7 @@ const ShowJobs = () => {
   const [candidates, setCandidates] = useState([]);
   const store = useContext(StoreContext);
   const [pageNo, setPageNo] = useState(1);
+  const [candidateFetched, setCandidateFetched] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const ShowJobs = () => {
   return (
     <div className="w-[75vw] h-full mx-auto mt-2 mb-10">
       {store.isModal && <Overlay close={store.hideModal} />}
-      {store.isModal && (
+      {store.isModal && candidateFetched && (
         <ShowApplicants close={store.hideModal} data={candidates} />
       )}
       <h4 className="text-white text-[12px] flex">

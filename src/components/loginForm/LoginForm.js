@@ -64,7 +64,7 @@ const LoginForm = () => {
                     placeholder="Enter your password"
                   />
                   {error.trim().length > 0 && (
-                    <p className="error absolute right-0 text-xs text-primary-8 mt-6">
+                    <p className="error absolute right-0 text-xs text-primary-8 mt-3">
                       Incorrect email or password
                     </p>
                   )}

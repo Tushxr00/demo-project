@@ -37,7 +37,7 @@ const App = () => {
       setShowPopUp(true);
       setTimeout(() => {
         setShowPopUp(false);
-      }, 5000);
+      }, 3000);
     }
 
     return () => {
