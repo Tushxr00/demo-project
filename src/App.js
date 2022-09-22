@@ -43,8 +43,6 @@ const App = () => {
     };
   }, [loginState]);
 
-  console.log({ appInitialized });
-
   return (
     <>
       <Background />

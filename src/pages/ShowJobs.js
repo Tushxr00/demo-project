@@ -44,12 +44,9 @@ const ShowJobs = () => {
   const pageChange = async (page) => {
     const pageArray = Object.keys(jobData);
     const pageCheck = pageArray.find((item) => item === page);
-    console.log({ pageArray, pageCheck });
     if (!pageCheck) {
-      console.log(page);
       const response = await getPostedJobs(page);
       if (response.success) {
-        console.log(response);
         setJobData((prevState) => {
           return { ...prevState, [page]: response.data.data };
         });
@@ -110,7 +107,6 @@ const ShowJobs = () => {
               </div>
             }
             onPageChange={async (e) => {
-              console.log(e.selected + 1);
               await pageChange(e.selected + 1);
               setPageNo(e.selected + 1);
             }}

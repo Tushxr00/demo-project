@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 const Overlay = (props) => {
   useEffect(() => {
     let [body] = document.getElementsByTagName("body");
-    console.log(body);
 
     body.classList.add("overflow-hidden");
 
