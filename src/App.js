@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Header from "./components/header/Header";
 import Background from "./components/layout/Background";
 import LogStatusPopUp from "./components/layout/LogStatusPopUp";
@@ -23,6 +23,8 @@ const App = () => {
   const loginState = store.isLoggedIn;
   const [showPopUp, setShowPopUp] = useState(false);
   const [appInitialized, setAppInitialized] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   let popUpMessage = loginState ? loggedInPopUp : loggedOutPopUp;
 
@@ -42,6 +44,13 @@ const App = () => {
       clearTimeout(x);
     };
   }, [loginState]);
+
+  useEffect(() => {
+    console.log(location.pathname);
+    if (location.pathname.toLocaleLowerCase() === "/showjobs" && !loginState) {
+      navigate("/login");
+    }
+  }, [location]);
 
   return (
     <>
