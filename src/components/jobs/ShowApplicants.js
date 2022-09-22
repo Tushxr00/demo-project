@@ -10,7 +10,7 @@ const ShowApplicants = (props) => {
       {ReactDOM.createPortal(
         <Card classes="z-30 w-[694px] h-[630px] fixed top-0 rounded-[20px] fixed left-1/2 translate-x-[-50%] top-[5.5rem] mx-auto p-10">
           <div className="flex justify-between mb-3">
-            <h2 className="text-[19px] text-primary-2">
+            <h2 className="text-[19px] font-[500] text-primary-2">
               Applicants for this job
             </h2>
             <p
@@ -20,8 +20,8 @@ const ShowApplicants = (props) => {
               <AiOutlineClose className="h-[20px] w-[20px] " />
             </p>
           </div>
-          <p className="pt-3 border-t-[1px] border-primary-2/20 text-[15px] text-primary-2">
-            Total {props.data.length} applicaations
+          <p className="pt-3 border-t-[1px] border-primary-2/20 text-[15px] text-primary-2 ">
+            Total {props.data.length} applications
           </p>
           <div className="">
             <div
@@ -35,22 +35,25 @@ const ShowApplicants = (props) => {
                   props.data.map((item) => (
                     <Card
                       key={item.id}
-                      classes="w-[270px] h-[159px] p-[14px] border-[#303F6080] border-[2px]"
+                      classes="w-[270px] h-[159px] p-[14px] border-[#303F6080] border-[2px]  rounded-[5px]"
                     >
                       <div className="flex w-fit">
-                        <div className="w-[50px] h-[50px] rounded-[100%] bg-[#D9EFFF] order-[2px] relative">
+                        <div
+                          className="w-[50px] h-[50px] rounded-[100%] bg-[#D9EFFF]
+                        relative"
+                        >
                           <p className="absolute capitalize top-[50%] left-[50%] translate-x-[-50%]  translate-y-[-50%] text-primary-2 font-bold">
                             {item.name[0]}
                           </p>
                         </div>
                         <div className="ml-4 text-primary-2 w-[180px]">
-                          <p className="font-bold">{item.name}</p>
+                          <p className="font-[500] truncate">{item.name}</p>
                           <p className="truncate">{item.email}</p>
                         </div>
                       </div>
                       <div className="mt-3 text-primary-2">
-                        <p className="text-[13px] font-bold ">Skills</p>
-                        <p className="line-clamp-2 text-[15px] mt-1">
+                        <p className="text-[13px] font-[500] ">Skills</p>
+                        <p className="line-clamp-2 text-[15px] mt-">
                           {item.skills}
                         </p>
                       </div>

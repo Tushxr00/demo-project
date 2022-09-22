@@ -6,11 +6,11 @@ const LogStatusPopUp = (props) => {
     <div className=" z-10 absolute top-[5rem] right-[4rem]">
       <Card classes="rounded-[5px] w-[343px] h-[99px] p-4">
         <div className="flex justify-between">
-          <h2 className="text-[24px] text-primary-4 font-bold">
+          <h2 className="text-[24px] text-primary-4 font-[500]">
             {props.title}
           </h2>
           <div
-            className="text-[25px] cursor-pointer font-bold absolute top-0 left-[92.5%] text-primary-2 pr-2"
+            className="text-[25px] cursor-pointer font-bold absolute top-[3px] left-[92%] text-primary-2"
             onClick={() => props.close()}
           >
             <AiOutlineClose />

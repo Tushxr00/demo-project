@@ -29,9 +29,12 @@ const LogoutButton = (props) => {
 
   return (
     <div className="relative">
-      <Card classes="w-[100px] h-[40px] absolute top-[3.9rem] rounded-[5px] left-[-6rem] logoutPopUp cursor-pointer">
+      <Card classes="w-[100px] h-[40px] absolute top-[3.9rem] rounded-[5px] left-[-6rem] logoutPopUp">
         <AiFillCaretUp className="text-white absolute left-[70%] top-[-17px] h-[25px] w-[25px]" />
-        <button className=" ml-4 mt-2 text-primary-2 text-[14px] logoutPopUp">
+        <button
+          className="cursor-pointer ml-4 mt-2 text-primary-2 text-[14px] logoutPopUp"
+          onClick={() => store.onLogout()}
+        >
           Logout
         </button>
       </Card>

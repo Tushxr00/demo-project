@@ -46,7 +46,6 @@ const App = () => {
   }, [loginState]);
 
   useEffect(() => {
-    console.log(location.pathname);
     if (location.pathname.toLocaleLowerCase() === "/showjobs" && !loginState) {
       navigate("/login");
     }

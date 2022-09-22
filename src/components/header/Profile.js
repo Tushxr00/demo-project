@@ -19,7 +19,7 @@ const Profile = () => {
           </p>
         </div>
         <AiFillCaretDown
-          className="self-center cursor-pointer text-white ml-3 showLoginPopUp"
+          className="self-center cursor-pointer text-white ml-[5px] showLoginPopUp"
           onClick={() => setOpenLogoutModal(true)}
         />
         {openLogoutModal && (

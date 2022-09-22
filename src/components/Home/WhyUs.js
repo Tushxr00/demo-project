@@ -28,7 +28,7 @@ const WhyUs = () => {
   return (
     <div className="w-[80vw] mx-auto mt-[6rem]">
       <h2 className="text-[22px] font-[500] text-primary-2">Why Us</h2>
-      <ul className="mt-[2rem] flex justify-between">
+      <ul className="mt-[2.5rem] flex justify-between">
         {whyUsData.map((item) => {
           return (
             <li

@@ -10,9 +10,9 @@ const Banner = () => {
     <div className="w-[80vw] mx-auto">
       <div className="flex justify-between text-white font-normal">
         <section className="p-7">
-          <h1 className="text-[60px] mb-8 mt-16 leading-tight w-[334px]">
+          <h1 className="text-[60px] mb-8 mt-16 leading-tight w-[334px] font-[400]">
             Welcome to {""}
-            <span className="font-bold ">
+            <span className="font-[500] ">
               My<span className="text-primary-4">Jobs</span>
             </span>
           </h1>

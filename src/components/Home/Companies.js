@@ -60,10 +60,10 @@ const Companies = () => {
 
   return (
     <div className="w-[80vw] mx-auto mt-[4rem] mb-[2rem]">
-      <h2 className="text-[22px] text-primary-2 font-bold">
+      <h2 className="text-[22px] text-primary-2 font-[500] ">
         Companies Who Trust Us
       </h2>
-      <section className="flex flex-wrap mt-[3rem]">
+      <section className="flex flex-wrap mt-[2.5rem]">
         {companiesLogoArray.map((item) => {
           return (
             <div key={item.id} className="w-[20%] mb-[2rem] flex-grow">
