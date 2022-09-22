@@ -6,17 +6,15 @@ const InputField = (props) => {
     name: props.name,
     type: props.type,
   });
+
   return (
     <div className="mb-3 mt-5 relative">
       <label htmlFor={field.name} className="text-primary-2 text-sm">
         {props.label}
       </label>
       <input
-        // className={`form-control shadow-none ${
-        //   meta.touched && meta.error && "is-invalid"
-        // } `}
-        className={`w-full mt-2 h-[46px] placeholder:text-[14px] pl-[1rem] outline-primary-4 ${
-          meta.touched && meta.error && "outline-primary-9"
+        className={`w-full mt-2 h-[46px] placeholder:text-[14px] border-[1px] border-primary-10 rounded-[5px] pl-[1rem] outline-primary-4 ${
+          meta.error && "border-[#FF333380]"
         }`}
         autoComplete="off"
         {...field}
@@ -27,7 +25,7 @@ const InputField = (props) => {
       <ErrorMessage
         component="div"
         name={field.name}
-        className="error absolute right-0 text-xs text-primary-8 mt-3"
+        className="error absolute right-0 text-xs text-primary-8 mt-[5px]"
       />
     </div>
   );

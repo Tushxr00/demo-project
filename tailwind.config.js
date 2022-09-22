@@ -20,6 +20,9 @@ module.exports = {
           10: "#A9AFBC",
         },
       },
+      fontFamily: {
+        heveticaNeue: ["HeveticaNeue", "Helvetica", "Arial", "sans-serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],

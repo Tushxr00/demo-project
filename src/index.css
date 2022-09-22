@@ -2,9 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer base {
+  @font-face {
+    font-family: "HeveticaNeue Medium";
+    src: url("/src/assets/font/helveticaneue/HeveticaNeue Medium.ttf")
+      format("ttf");
+  }
+  @font-face {
+    font-family: "HeveticaNeue Light";
+    src: url("/src/assets/font/helveticaneue/HeveticaNeue Light.ttf")
+      format("ttf");
+  }
+  @font-face {
+    font-family: "HeveticaNeue";
+    src: url("/src/assets/font/helveticaneue/HeveticaNeue.ttf") format("ttf");
+  }
+} */
+
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: url("./assets/font/helveticaneue/HelveticaNeue.ttf"), Helvetica,
+    Arial, sans-serif;
   background: #edf6ff 0% 0% no-repeat padding-box;
 }
 

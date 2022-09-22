@@ -33,7 +33,7 @@ const App = () => {
 
     if (appInitialized) {
       setShowPopUp(true);
-      let hidePopUp = setTimeout(() => {
+      setTimeout(() => {
         setShowPopUp(false);
       }, 5000);
     }
