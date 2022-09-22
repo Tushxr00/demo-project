@@ -31,7 +31,7 @@ const App = () => {
   useEffect(() => {
     let x = setTimeout(() => {
       setAppInitialized(true);
-    }, 3000);
+    }, 400);
 
     if (appInitialized) {
       setShowPopUp(true);
