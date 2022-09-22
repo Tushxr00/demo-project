@@ -30,6 +30,7 @@ export const StoreContextProvider = (props) => {
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
     setIsLoggedIn(false);
     setEmail("");
     navigate("/");

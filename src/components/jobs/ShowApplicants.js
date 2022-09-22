@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Card from "../UI/Card";
 import noAppliants from "../../assets/noApplicants/curriculum.svg";
+import { AiOutlineClose } from "react-icons/ai";
 
 const ShowApplicants = (props) => {
   return (
@@ -13,10 +14,10 @@ const ShowApplicants = (props) => {
               Applicants for this job
             </h2>
             <p
-              className="h-[15px] w-[15px] text-primary-2 font-bold cursor-pointer"
+              className="h-[20px] w-[20px] text-primary-2  absolute left-[95%] mr-3 top-[1rem] cursor-pointer"
               onClick={() => props.close()}
             >
-              X
+              <AiOutlineClose className="h-[20px] w-[20px] " />
             </p>
           </div>
           <p className="pt-3 border-t-[1px] border-primary-2/20 text-[15px] text-primary-2">

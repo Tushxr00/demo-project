@@ -50,6 +50,9 @@ const App = () => {
     if (location.pathname.toLocaleLowerCase() === "/showjobs" && !loginState) {
       navigate("/login");
     }
+    if (location.pathname.toLocaleLowerCase() === "/login" && loginState) {
+      navigate("/showjobs");
+    }
   }, [location]);
 
   return (
