@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 const Overlay = (props) => {
+  useEffect(() => {
+    let [body] = document.getElementsByTagName("body");
+    console.log(body);
+
+    body.classList.add("overflow-hidden");
+
+    return () => {
+      body.classList.remove("overflow-hidden");
+    };
+  }, []);
   return (
     <>
       {ReactDOM.createPortal(

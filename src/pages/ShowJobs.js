@@ -6,7 +6,7 @@ import { getOneJobCandidates, getPostedJobs } from "../helper/api";
 import writing from "../assets/writing/writing@2x.png";
 import Overlay from "../components/UI/Overlay";
 import StoreContext from "../store/context-store";
-import Modal from "../components/jobs/Modal";
+import ShowApplicants from "../components/jobs/ShowApplicants";
 import ReactPaginate from "react-paginate";
 
 const ShowJobs = () => {
@@ -60,7 +60,9 @@ const ShowJobs = () => {
   return (
     <div className="w-[75vw] h-full mx-auto mt-2 mb-10">
       {store.isModal && <Overlay close={store.hideModal} />}
-      {store.isModal && <Modal close={store.hideModal} data={candidates} />}
+      {store.isModal && (
+        <ShowApplicants close={store.hideModal} data={candidates} />
+      )}
       <h4 className="text-white text-[12px] flex">
         <AiFillHome
           className="h-3 w-3 self-center cursor-pointer"

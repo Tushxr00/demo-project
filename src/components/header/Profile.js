@@ -12,7 +12,7 @@ const Profile = () => {
       <div className="flex self-center">
         <div className="w-[46px] h-[46px] rounded-[100%] bg-[#D9EFFF] order-[2px] relative">
           <p
-            className="absolute  top-[50%] left-[50%] translate-x-[-50%] showLoginPopUp translate-y-[-50%] text-primary-2 font-bold text-xl cursor-pointer"
+            className="absolute  top-[50%] left-[50%] translate-x-[-50%] showLoginPopUp translate-y-[-50%] text-primary-2 font-bold text-xl cursor-pointer capitalize"
             onClick={() => setOpenLogoutModal(true)}
           >
             {store.email?.[0]}
